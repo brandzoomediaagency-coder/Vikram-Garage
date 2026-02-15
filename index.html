@@ -68,6 +68,47 @@
             box-shadow: 0 4px 15px rgba(225, 0, 0, 0.4);
         }
 
+        /* Star Progress Bars */
+        .progress-bar {
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4ade80;
+            /* Green fill from image */
+        }
+
+        .review-card {
+            background: #000;
+            border: 1px solid #e10000;
+            border-top: none;
+            /* Reference image shows slight gradient or varied borders sometimes, but solid red is prominent */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: transform 0.2s;
+        }
+
+        .review-card:hover {
+            transform: scale(1.02);
+        }
+
+        .rating-tag {
+            background: #16a34a;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -391,48 +432,320 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-24 bg-dark">
+    <section id="testimonials" class="py-24 bg-dark">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-black uppercase">What Our <span class="text-primary">Riders Say</span></h3>
+                <h3 class="text-5xl font-black uppercase text-white">Our Happy <span
+                        class="text-primary italic">Customer</span></h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-darker p-8 rounded-2xl border border-white/5" data-aos="fade-up">
-                    <div class="flex text-primary mb-4">
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Left Side: Summary -->
+                <div class="lg:w-1/3" data-aos="fade-right">
+                    <div class="flex items-center gap-4 mb-8">
+                        <i data-lucide="star" class="w-16 h-16 text-yellow-500 fill-current"></i>
+                        <span class="text-7xl font-black text-white">4.7</span>
                     </div>
-                    <p class="italic text-muted mb-6">"Most convenient service I've ever had. No more pushing my bike to
-                        a local workshop."</p>
-                    <div class="font-bold">— Rahul S., Royal Enfield Classic 350</div>
+
+                    <div class="space-y-4 mb-12 max-w-xs">
+                        <!-- 5 Star -->
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="flex items-center gap-1 text-yellow-500 font-bold">5 <i data-lucide="star"
+                                    class="w-3 h-3 fill-current"></i></span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                            <span class="text-muted w-10 text-right">916</span>
+                        </div>
+                        <!-- 4 Star -->
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="flex items-center gap-1 text-yellow-500 font-bold">4 <i data-lucide="star"
+                                    class="w-3 h-3 fill-current"></i></span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%;"></div>
+                            </div>
+                            <span class="text-muted w-10 text-right">230</span>
+                        </div>
+                        <!-- 3 Star -->
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="flex items-center gap-1 text-yellow-500 font-bold">3 <i data-lucide="star"
+                                    class="w-3 h-3 fill-current"></i></span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 10%;"></div>
+                            </div>
+                            <span class="text-muted w-10 text-right">23</span>
+                        </div>
+                        <!-- 2 Star -->
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="flex items-center gap-1 text-yellow-500 font-bold">2 <i data-lucide="star"
+                                    class="w-3 h-3 fill-current"></i></span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 3%;"></div>
+                            </div>
+                            <span class="text-muted w-10 text-right">6</span>
+                        </div>
+                        <!-- 1 Star -->
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="flex items-center gap-1 text-yellow-500 font-bold">1 <i data-lucide="star"
+                                    class="w-3 h-3 fill-current"></i></span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 1%;"></div>
+                            </div>
+                            <span class="text-muted w-10 text-right">3</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center lg:text-left">
+                        <button
+                            class="px-8 py-3 bg-red-600 text-white font-bold rounded-full uppercase tracking-tighter btn-red-shadow hover:bg-red-700 transition-all">
+                            Write customer Reviews
+                        </button>
+                    </div>
                 </div>
-                <div class="bg-darker p-8 rounded-2xl border border-white/5" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex text-primary mb-4">
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+
+                <!-- Right Side: Grid of Reviews (20+) -->
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-left">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Pallavi Joshi <span
+                                    class="text-sm font-normal text-muted">(Scooty Checkup)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">Had to leave for an
+                            out-of-station trip tomorrow and realized the scooty was overdue for service. Booked an
+                            emergency slot and they were here within two hours. They checked the tires, oil, and
+                            lights....</p>
                     </div>
-                    <p class="italic text-muted mb-6">"Transparency is key. I got an estimate before the work started
-                        and the mechanic was very skilled."</p>
-                    <div class="font-bold">— Amit M., KTM Duke 200</div>
-                </div>
-                <div class="bg-darker p-8 rounded-2xl border border-white/5" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex text-primary mb-4">
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Aditya Deshpande <span
+                                    class="text-sm font-normal text-muted">(Bike Home Service)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">My front brake felt 'spongy'
+                            after a long ride. The doorstep technician performed a thorough bleed right at my house. He
+                            even cleaned the brake pads without me asking. The bike stops on a dime now. ...</p>
                     </div>
-                    <p class="italic text-muted mb-6">"Punctuality and professionalism as promised. Vikram Garage is now
-                        my permenant bike partner."</p>
-                    <div class="font-bold">— Sameer K., Honda Shine</div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Sanchit Tyagi <span
+                                    class="text-sm font-normal text-muted">(Scooty Periodic Service)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">The best part is seeing the
+                            fresh oil being poured in from a sealed bottle. In local garages, you never know what they
+                            use. My scooty feels much lighter and the pick-up has improved significantly. Thi...</p>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Rohan Mehra <span
+                                    class="text-sm font-normal text-muted">(Bike Full Home Service)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">I live in a society with
+                            tight parking but the mechanic managed everything within his own footprint. He didn't
+                            disturb the neighbors or leave a mess. The gear shifts are much smoother and the ...</p>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Zeeshan Ali <span
+                                    class="text-sm font-normal text-muted">(Bike Chain & Coolant)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">I usually do my own minor
+                            tweaks, but for a full service, I called these guys. It was great to chat with the mechanic
+                            while he worked; he actually shared some solid maintenance tips and ...</p>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Deepali Verma <span
+                                    class="text-sm font-normal text-muted">(Scooty Major Service)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">It was pouring outside and my
+                            scooty wouldn't start. I booked a home visit, and the mechanic arrived with all the tools.
+                            He cleaned the spark plug and checked the battery. Professional and ...</p>
+                    </div>
+
+                    <!-- Review 7 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Kunal Singh <span
+                                    class="text-sm font-normal text-muted">(Oil Change)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">Super impressed with the speed.
+                            Changed the filter and oil in 30 mins. No hassle of waiting in a workshop lobby for hours.
+                        </p>
+                    </div>
+
+                    <!-- Review 8 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Priya Sharma <span
+                                    class="text-sm font-normal text-muted">(Full Checkup)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">Vikram Garage is my go-to for
+                            my Vespa. They treat it with care. The digital invoice is also very helpful for keeping
+                            track of records.</p>
+                    </div>
+
+                    <!-- Review 9 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Rahul Jain <span
+                                    class="text-sm font-normal text-muted">(Brake Repair)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">Efficient and transparent. The
+                            mechanic showed me exactly why the brake shoe needed replacement. Highly recommended.</p>
+                    </div>
+
+                    <!-- Review 10 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Ankit Gupta <span
+                                    class="text-sm font-normal text-muted">(Chain Sprocet)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">They replaced the chain set at my
+                            home. Saves so much time. I didn't even have to take leaves from work.</p>
+                    </div>
+
+                    <!-- Review 11 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Vikram Negi <span
+                                    class="text-sm font-normal text-muted">(Electrical Fix)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">My indicator was acting up. He found
+                            a loose connection instantly. He didn't even charge for the small fix when he came for
+                            regular service.</p>
+                    </div>
+
+                    <!-- Review 12 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Sonia Kapoor <span
+                                    class="text-sm font-normal text-muted">(Routine Check)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">The most convenient bike
+                            service in Delhi. Punctual and professional. Never going back to service centers.</p>
+                    </div>
+
+                    <!-- Review 13 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Manish Reddy <span
+                                    class="text-sm font-normal text-muted">(Battery Change)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">Dead battery at 9 AM. Called Vikram
+                            Garage and by 11 AM, I had a new Amaron battery installed with warranty card. Savage
+                            service!</p>
+                    </div>
+
+                    <!-- Review 14 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Ishaan Malotra <span
+                                    class="text-sm font-normal text-muted">(Engine Tune)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">The engine sound is so much smoother
+                            now. They really know what they are doing with Royal Enfields.</p>
+                    </div>
+
+                    <!-- Review 15 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Tanvi Bhatia <span
+                                    class="text-sm font-normal text-muted">(Fork Overhaul)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">My front suspension was leaking.
+                            They fixed it on the spot. Great expertise and no hidden charges.</p>
+                    </div>
+
+                    <!-- Review 16 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Sameer Khan <span
+                                    class="text-sm font-normal text-muted">(General Service)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">Transparency is what I look for. You
+                            see what's being done. No parts are swapped unnecessarily.</p>
+                    </div>
+
+                    <!-- Review 17 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Navya Roy <span
+                                    class="text-sm font-normal text-muted">(Carburetor Clean)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">My Pulsar had starting
+                            issues. The technician cleaned the carburetor and adjusted the idling. Runs like new.</p>
+                    </div>
+
+                    <!-- Review 18 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Varun Chawla <span
+                                    class="text-sm font-normal text-muted">(Tyre Replacement)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">Even did tyre replacement at home!
+                            They bring the machinery needed. Mind-blowing doorstep execution.</p>
+                    </div>
+
+                    <!-- Review 19 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Megha Agarwal <span
+                                    class="text-sm font-normal text-muted">(Brake Fluid)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">They actually checked my brake fluid
+                            moisture level with a tool. Very technical and knowledgeable team.</p>
+                    </div>
+
+                    <!-- Review 20 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Rishabh Pant <span
+                                    class="text-sm font-normal text-muted">(Major Overhaul)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light">Totally transformed my old Activa.
+                            It feels like I just took it out of the showroom. Thank you, Vikram!</p>
+                    </div>
+
+                    <!-- Review 21 -->
+                    <div class="review-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <h5 class="text-xl font-bold text-white leading-none">Alok Dubey <span
+                                    class="text-sm font-normal text-muted">(Clutch Adjustment)</span></h5>
+                            <div class="rating-tag"><i data-lucide="star" class="w-3 h-3 fill-current"></i> 5</div>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed font-light italic">Small fix but very important.
+                            They adjusted the clutch play perfectly. Small things matter.</p>
+                    </div>
                 </div>
             </div>
         </div>
