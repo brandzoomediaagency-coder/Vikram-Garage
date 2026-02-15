@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikram Garage | Doorstep Bike Servicing & Repair</title>
+    <meta name="description"
+        content="Expert bike servicing and repair at your doorstep. Professional mechanics for all brands. Inspired by premium garage services.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#e10000', // Red from garageoncall
+                        dark: '#000000',
+                        darker: '#0a0a0a',
+                        light: '#ffffff',
+                        muted: '#afafaf',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Nunito', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(225, 0, 0, 0.1);
+        }
+
+        .card-shadow:hover {
+            box-shadow: 0 10px 30px rgba(225, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .btn-red-shadow {
+            box-shadow: 0 4px 15px rgba(225, 0, 0, 0.4);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+        }
+
+        .floating-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse-red {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(225, 0, 0, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(225, 0, 0, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(225, 0, 0, 0);
+            }
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .animate-pulse-red {
+            animation: pulse-red 2s infinite;
+        }
+
+        .animate-pulse-green {
+            animation: pulse-green 2s infinite;
+        }
+
+        .btn-glow-red {
+            box-shadow: 0 0 15px rgba(225, 0, 0, 0.5);
+        }
+
+        .btn-glow-green {
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-light bg-dark overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-dark">
+        <nav class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black text-white flex items-center gap-2">
+                <span class="text-primary italic">VIKRАM</span> GАRАGЕ
+            </a>
+
+            <ul class="hidden lg:flex space-x-8 font-semibold uppercase text-xs tracking-widest">
+                <li><a href="#home" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="#services" class="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="#how-it-works" class="hover:text-primary transition-colors">Process</a></li>
+                <li><a href="#locations" class="hover:text-primary transition-colors">Locations</a></li>
+                <li><a href="#faq" class="hover:text-primary transition-colors">FAQ</a></li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:+919810630604" class="hidden sm:flex items-center gap-2 text-primary font-bold">
+                    <i data-lucide="phone-forwarded" class="w-4 h-4"></i>
+                    +91 98106 30604
+                </a>
+                <button class="lg:hidden text-white" id="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden fixed inset-0 bg-dark z-[60] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase overflow-y-auto">
+            <button class="absolute top-6 right-6" id="close-menu-btn">
+                <i data-lucide="x" class="w-10 h-10"></i>
+            </button>
+            <a href="#home" class="mobile-link hover:text-primary">Home</a>
+            <a href="#services" class="mobile-link hover:text-primary">Services</a>
+            <a href="#how-it-works" class="mobile-link hover:text-primary">Process</a>
+            <a href="#locations" class="mobile-link hover:text-primary">Locations</a>
+            <a href="#faq" class="mobile-link hover:text-primary">FAQ</a>
+            <a href="#contact" class="mobile-link hover:text-primary">Contact</a>
+            <div class="pt-8 flex gap-6">
+                <a href="tel:+919810630604" class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                    <i data-lucide="phone"></i>
+                </a>
+                <a href="https://wa.me/919810630604"
+                    class="w-12 h-12 bg-[#25D366] rounded-full flex items-center justify-center">
+                    <i data-lucide="message-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&q=80&w=2000"
+                alt="Bike Repair" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10" data-aos="zoom-in">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight">
+                Premium <span class="text-primary">Bike Care</span><br>At Your Doorstep
+            </h1>
+            <p class="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-10 font-medium">
+                Professional mechanics, genuine parts, and transparent pricing. Experience India's most trusted bike
+                service.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="tel:+919810630604"
+                    class="w-full sm:w-auto px-10 py-5 bg-primary text-white font-black rounded-lg text-lg uppercase tracking-widest btn-red-shadow hover:bg-red-700 transition-all flex items-center justify-center gap-3">
+                    <i data-lucide="phone-call"></i>
+                    Book Now
+                </a>
+                <a href="#services"
+                    class="w-full sm:w-auto px-10 py-5 border-2 border-white text-white font-black rounded-lg text-lg uppercase tracking-widest hover:bg-white hover:text-dark transition-all">
+                    Our Services
+                </a>
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-70">
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-bold text-primary">5000+</span>
+                    <span class="text-xs uppercase tracking-widest">Bikes Served</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-bold text-primary">4.9/5</span>
+                    <span class="text-xs uppercase tracking-widest">Rating</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-bold text-primary">24/7</span>
+                    <span class="text-xs uppercase tracking-widest">Support</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-bold text-primary">100%</span>
+                    <span class="text-xs uppercase tracking-widest">Genuine Parts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-darker py-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-red-600 font-bold uppercase tracking-[0.3em] mb-4">Our Expertise</h2>
+                <h3 class="text-4xl md:text-5xl font-black uppercase">Professional <span
+                        class="text-primary italic">Services</span></h3>
+                <div class="w-24 h-1 bg-primary mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-dark p-10 rounded-3xl border border-white/5 card-shadow transition-all group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 bg-red-600/10 text-primary rounded-2xl flex items-center justify-center mb-8 border border-red-600/20 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="settings-2" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 uppercase italic">Regular Servicing</h4>
+                    <p class="text-muted leading-relaxed">Comprehensive maintenance including oil change, filter
+                        cleaning, brake adjustment, and 20-point safety check.</p>
+                    <ul class="mt-6 space-y-3 text-sm font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Engine Oil Replacement</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i> Air
+                            Filter Cleaning</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Chain Lubrication</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-dark p-10 rounded-3xl border border-white/5 card-shadow transition-all group"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 bg-red-600/10 text-primary rounded-2xl flex items-center justify-center mb-8 border border-red-600/20 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 uppercase italic">Major Repairs</h4>
+                    <p class="text-muted leading-relaxed">Engine overhauling, gearbox issues, and complete electrical
+                        system diagnosis by senior tech experts.</p>
+                    <ul class="mt-6 space-y-3 text-sm font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Engine Diagnostics</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Clutch/Gear Replacement</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Wiring & Battery</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-dark p-10 rounded-3xl border border-white/5 card-shadow transition-all group"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-16 h-16 bg-red-600/10 text-primary rounded-2xl flex items-center justify-center mb-8 border border-red-600/20 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i data-lucide="activity" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-4 uppercase italic">Breakdown Fix</h4>
+                    <p class="text-muted leading-relaxed">Stranded on the road? We provide immediate on-spot assistance
+                        for punctures, startups, and towing.</p>
+                    <ul class="mt-6 space-y-3 text-sm font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Mobile Mechanic Support</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Battery Jumpstart</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="text-primary w-4 h-4"></i>
+                            Puncture Repair</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 bg-dark">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <h2 class="text-primary font-bold uppercase tracking-[0.3em] mb-4 text-center lg:text-left">The
+                        Process</h2>
+                    <h3 class="text-4xl md:text-5xl font-black uppercase mb-8 text-center lg:text-left">How It <span
+                            class="text-primary italic">Works</span></h3>
+
+                    <div class="space-y-12">
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-primary text-white font-black rounded-lg flex items-center justify-center text-xl">
+                                1</div>
+                            <div>
+                                <h5 class="text-xl font-bold uppercase mb-2">Book Your Slot</h5>
+                                <p class="text-muted">Call or WhatsApp us. Provide your location and bike details.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-primary text-white font-black rounded-lg flex items-center justify-center text-xl">
+                                2</div>
+                            <div>
+                                <h5 class="text-xl font-bold uppercase mb-2">Mechanic Arrival</h5>
+                                <p class="text-muted">Our certified professional arrives at your location with tools &
+                                    parts.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-primary text-white font-black rounded-lg flex items-center justify-center text-xl">
+                                3</div>
+                            <div>
+                                <h5 class="text-xl font-bold uppercase mb-2">Ride with Confidence</h5>
+                                <p class="text-muted">Witness the service, pay securely, and get a digital service
+                                    history.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=1000"
+                        alt="Process" class="rounded-[3rem] shadow-2xl border-8 border-white/5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="bg-darker py-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h3 class="text-3xl md:text-4xl font-black uppercase">Locations <span
+                        class="text-primary italic">Covered</span></h3>
+                <p class="text-muted mt-4">We are expanding rapidly across major hubs.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <span
+                    class="px-6 py-3 bg-dark border border-white/10 rounded-full font-bold hover:border-primary transition-all">Delhi</span>
+                <span
+                    class="px-6 py-3 bg-dark border border-white/10 rounded-full font-bold hover:border-primary transition-all">Noida</span>
+                <span
+                    class="px-6 py-3 bg-dark border border-white/10 rounded-full font-bold hover:border-primary transition-all">Greater
+                    Noida</span>
+                <span
+                    class="px-6 py-3 bg-dark border border-white/10 rounded-full font-bold hover:border-primary transition-all">Gurgaon</span>
+                <span
+                    class="px-6 py-3 bg-dark border border-white/10 rounded-full font-bold hover:border-primary transition-all">Ghaziabad</span>
+                <span
+                    class="px-6 py-3 bg-dark border border-white/10 rounded-full font-bold hover:border-primary transition-all">Faridabad</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-dark">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-black uppercase">What Our <span class="text-primary">Riders Say</span></h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-darker p-8 rounded-2xl border border-white/5" data-aos="fade-up">
+                    <div class="flex text-primary mb-4">
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                    </div>
+                    <p class="italic text-muted mb-6">"Most convenient service I've ever had. No more pushing my bike to
+                        a local workshop."</p>
+                    <div class="font-bold">— Rahul S., Royal Enfield Classic 350</div>
+                </div>
+                <div class="bg-darker p-8 rounded-2xl border border-white/5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-primary mb-4">
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                    </div>
+                    <p class="italic text-muted mb-6">"Transparency is key. I got an estimate before the work started
+                        and the mechanic was very skilled."</p>
+                    <div class="font-bold">— Amit M., KTM Duke 200</div>
+                </div>
+                <div class="bg-darker p-8 rounded-2xl border border-white/5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-primary mb-4">
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                    </div>
+                    <p class="italic text-muted mb-6">"Punctuality and professionalism as promised. Vikram Garage is now
+                        my permenant bike partner."</p>
+                    <div class="font-bold">— Sameer K., Honda Shine</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-darker">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h3 class="text-4xl font-black uppercase italic">Frequently <span class="text-primary">Asked</span></h3>
+            </div>
+
+            <div class="space-y-4">
+                <div class="accordion-item bg-dark border border-white/5 rounded-2xl overflow-hidden active">
+                    <button
+                        class="w-full p-6 text-left font-bold flex justify-between items-center bg-dark hover:bg-white/5 transition-all">
+                        <span>Is there a service charge for doorstep visit?</span>
+                        <i data-lucide="chevron-down" class="text-primary transition-transform"></i>
+                    </button>
+                    <div class="accordion-content bg-dark/50 p-6 pt-0 text-muted">
+                        We charge a minimal convenience fee for the doorstep visit, which is shared during booking.
+                        Detailed estimate is provided on-spot.
+                    </div>
+                </div>
+                <div class="accordion-item bg-dark border border-white/5 rounded-2xl overflow-hidden">
+                    <button
+                        class="w-full p-6 text-left font-bold flex justify-between items-center bg-dark hover:bg-white/5 transition-all">
+                        <span>Do you use genuine spare parts?</span>
+                        <i data-lucide="chevron-down" class="text-primary transition-transform"></i>
+                    </button>
+                    <div class="accordion-content bg-dark/50 p-6 pt-0 text-muted">
+                        Yes, we exclusively use 100% genuine spare parts from authorized distributors. Original billing
+                        is provided for parts.
+                    </div>
+                </div>
+                <div class="accordion-item bg-dark border border-white/5 rounded-2xl overflow-hidden">
+                    <button
+                        class="w-full p-6 text-left font-bold flex justify-between items-center bg-dark hover:bg-white/5 transition-all">
+                        <span>How much time does a regular service take?</span>
+                        <i data-lucide="chevron-down" class="text-primary transition-transform"></i>
+                    </button>
+                    <div class="accordion-content bg-dark/50 p-6 pt-0 text-muted">
+                        A typical regular service takes between 60 to 90 minutes depending on the bike model and
+                        condition.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-dark">
+        <div class="container mx-auto px-4">
+            <div class="bg-primary p-12 md:p-20 rounded-[4rem] text-center shadow-2xl relative overflow-hidden"
+                data-aos="zoom-in">
+                <div class="absolute -top-10 -left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+                <h2 class="text-4xl md:text-6xl font-black uppercase mb-8 leading-tight">Revive Your Ride<br>In Just One
+                    Call</h2>
+                <div class="flex flex-col md:flex-row gap-6 justify-center mt-12">
+                    <a href="tel:+919810630604"
+                        class="px-12 py-6 bg-darker text-white font-black rounded-2xl text-xl uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-4">
+                        <i data-lucide="phone"></i>
+                        Call Now
+                    </a>
+                    <a href="https://wa.me/919810630604" target="_blank"
+                        class="px-12 py-6 bg-[#25D366] text-white font-black rounded-2xl text-xl uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-4">
+                        <i data-lucide="message-square"></i>
+                        WhatsApp
+                    </a>
+                </div>
+                <p class="mt-12 text-white/80 font-bold uppercase tracking-widest">Available 24/7 for Emergencies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker py-20 border-t border-white/5">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-3xl font-black mb-6 uppercase">
+                <span class="text-primary italic">VIKRАM</span> GАRАGЕ
+            </div>
+            <p class="text-muted max-w-lg mx-auto mb-10">Simplifying the way India services its two-wheelers. Doorstep
+                care, trusted mechanics, happy rides.</p>
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="#"
+                    class="w-12 h-12 bg-dark rounded-full flex items-center justify-center text-muted hover:text-primary border border-white/5 transition-all"><i
+                        data-lucide="facebook"></i></a>
+                <a href="#"
+                    class="w-12 h-12 bg-dark rounded-full flex items-center justify-center text-muted hover:text-primary border border-white/5 transition-all"><i
+                        data-lucide="instagram"></i></a>
+                <a href="#"
+                    class="w-12 h-12 bg-dark rounded-full flex items-center justify-center text-muted hover:text-primary border border-white/5 transition-all"><i
+                        data-lucide="twitter"></i></a>
+            </div>
+            <div class="text-xs text-muted uppercase tracking-[0.3em]">&copy; 2024 Vikram Garage. Developed with
+                Excellence.</div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="fixed z-[9999]" style="right: 25px; bottom: 180px;">
+        <a href="https://wa.me/919810630604" target="_blank"
+            class="floating-btn animate-pulse-green btn-glow-green w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl group relative border-2 border-white/20">
+            <i data-lucide="message-circle" class="w-8 h-8"></i>
+            <span
+                class="absolute right-full mr-4 bg-dark text-white text-xs font-bold px-3 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest border border-white/10">WhatsApp</span>
+        </a>
+    </div>
+
+    <div class="fixed z-[9999]" style="right: 25px; bottom: 80px;">
+        <a href="tel:+919810630604"
+            class="floating-btn animate-pulse-red btn-glow-red w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl group relative border-2 border-white/20">
+            <i data-lucide="phone" class="w-8 h-8"></i>
+            <span
+                class="absolute right-full mr-4 bg-dark text-white text-xs font-bold px-3 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest border border-white/10">Call
+                Expert</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init Lucide
+        lucide.createIcons();
+
+        // Init AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50
+        });
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        };
+
+        closeBtn?.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+
+        // Accordion
+        document.querySelectorAll('.accordion-item button').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Header Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '5px 0';
+            } else {
+                header.style.padding = '10px 0';
+            }
+        });
+    </script>
+</body>
+
+</html>
